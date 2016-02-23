@@ -1,7 +1,6 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
-
 @Component({
   selector: 'tracker-app',
   providers: [],
@@ -13,9 +12,5 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 ])
 export class TrackerApp {
-  defaultMeaning: number = 42;
-  
-  meaningOfLife(meaning?: number) {
-    return `The meaning of life is ${meaning || this.defaultMeaning}`;
-  }
+
 }
