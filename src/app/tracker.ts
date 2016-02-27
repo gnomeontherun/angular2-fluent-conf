@@ -1,9 +1,10 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Stocks} from './services/stocks/stocks';
 
 @Component({
   selector: 'tracker-app',
-  providers: [],
+  providers: [Stocks],
   templateUrl: 'app/tracker.html',
   directives: [ROUTER_DIRECTIVES],
   pipes: []
@@ -13,4 +14,9 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 ])
 export class TrackerApp {
 
+  constructor(service: Stocks) {
+    service.load().subscribe(stocks => {
+      console.log(stocks.json());
+    });
+  }
 }
