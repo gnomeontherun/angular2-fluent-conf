@@ -28,8 +28,10 @@ Vagrant.configure(2) do |config|
     echo "Installing Node Modules"
     echo "-----------------------"
     npm set progress=false
-    sudo npm install --global angular-cli@0.0.23
-
+    sudo npm install --global angular-cli@0.0.23 typings
+    cd /vagrant
+    npm install
+    npm run postinstall -y
     echo "cd /vagrant" >> /home/vagrant/.bashrc
   SHELL
 end
