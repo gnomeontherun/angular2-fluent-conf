@@ -15,8 +15,18 @@ Vagrant is a simple way to setup a VM so that your local development environment
 * Start the Vagrant VM using `vagrant up`. This can take a few minutes the first time you use Vagrant because it has to download OS images. It will also mount the local files into the VM as a shared drive.
 * There may be some red messages, those are usually just NPM warnings that aren't real errors.
 * Log into the VM `vagrant ssh`. This gives you shell access to the environment.
+* Then run `npm install` to download the dependencies for the project. (If you already ran `npm install` from outside of the Vagrant shell, first run `rm -rf node_modules` to delete the existing directory. Some modules won't work correctly if they are installed on a different host platform.)
 * Run `ng serve` and when it is ready access the sample at `http://localhost:4200`.
 * If you see the application up and running, you're good to go. 
+
+#### Possible troubleshooting
+
+* There are a lot of warnings and even some errors that happen due to NPM being noisy, you can usually ignore those. When installing with Vagrant, they look even more ominous in red, but . As long as `ng serve` runs, you're setup is ok.
+* Possibly your port mappings will be different if the port is not available. When `ng serve` begins it outputs the ports for both the server and the live reload, so you can update those ports in the Vagrantfile, exit the Vagrant ssh session if you are in it, run `vagrant reload`, and then `vagrant up` to reset the ports.
+
+## Plunkr
+
+The entire app is also available online as a Plunkr. You can find the finished version here http://plnkr.co/edit/xQVb69m90anycp7jUh2A?p=preview.
 
 ## Alternative
 

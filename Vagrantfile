@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 49152, host: 49152
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 1024
+    vb.memory = 2048
   end
 
   config.vm.provision "shell", inline: <<-SHELL
@@ -27,9 +27,9 @@ Vagrant.configure(2) do |config|
     echo "-----------------------"
     echo "Installing Node Modules"
     echo "-----------------------"
+    npm set progress=false
     sudo npm install --global angular-cli@0.0.23
-    cd /vagrant
-    npm install
+
     echo "cd /vagrant" >> /home/vagrant/.bashrc
   SHELL
 end
